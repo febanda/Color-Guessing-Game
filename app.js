@@ -3,8 +3,8 @@
 var numSquares = 6;
 var pickedColor;
 var squares = document.querySelectorAll(".square");
-var systemMessageDisplay = document.querySelector("#default-code");
-var userMessageDisplay = document.querySelector("#user-code");
+var systemMessageDisplay = document.querySelector("#colorDisplay");
+var userMessageDisplay = document.querySelector("#message");
 var resetButton = document.querySelector("#reset");
 var modeButtons = document.querySelectorAll(".mode");
 var header = document.querySelector('#header');
@@ -20,12 +20,12 @@ resetButton.addEventListener('click', function(){
     systemMessageDisplay.innerHTML = pickedColor
     header.style.backgroundColor = 'steelblue'
     userMessageDisplay.innerHTML = ''
-    for(i=0; i<squares.length; i++){
+    for(i=0; i<=squares.length; i++){
         squares[i].style.backgroundColor = colors[i]
     }
 })
 
-// systemMessageDisplay.innerHTML = pickedColor
+systemMessageDisplay.innerHTML = pickedColor
 
 
 for(i=0; i<squares.length; i++){
@@ -34,7 +34,7 @@ for(i=0; i<squares.length; i++){
     //enable click event on each square...
     squares[i].addEventListener('click', function(){
         //select the background color of the selected color block and assign it to clickedColor
-        let clickedColor = this.style.backgroundColor
+        var clickedColor = this.style.backgroundColor
 
         //check if the selected color matched the default default color
         if(pickedColor === clickedColor){
@@ -62,7 +62,8 @@ function changeColors(color){
 }
 
 function pickColor(){
-    const random = Math.floor(Math.random() * colors.length)
+    var random = Math.floor(Math.random() * colors.length)
+    console.log('pickColor')
     return colors[random]
 }
 
